@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddy Photography - Capturing Moments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Lato', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f9f9f9',
+                            100: '#f0f0f0',
+                            200: '#e0e0e0',
+                            300: '#d0d0d0',
+                            400: '#a0a0a0',
+                            500: '#707070',
+                            600: '#505050',
+                            700: '#333333', // Primary dark
+                            800: '#222222',
+                            900: '#111111',
+                            accent: '#d4af37', // Gold accent
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            background-color: #fcfcfc;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: '"Playfair Display"', serif;
+        }
+        
+        /* Fade-in Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            visibility: hidden;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+            visibility: visible;
+        }
+
+        /* Gallery Grid Hover Effects */
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+        }
+        .gallery-item img {
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(17, 17, 17, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-serif font-bold text-brand-900 tracking-wider">
+                        REDDY<span class="text-brand-accent">.</span>PHOTO
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-brand-600 hover:text-brand-accent px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                    <a href="#portfolio" class="text-brand-600 hover:text-brand-accent px-3 py-2 text-sm font-medium transition-colors">Portfolio</a>
+                    <a href="#services" class="text-brand-600 hover:text-brand-accent px-3 py-2 text-sm font-medium transition-colors">Services</a>
+                    <a href="#about" class="text-brand-600 hover:text-brand-accent px-3 py-2 text-sm font-medium transition-colors">About</a>
+                    <a href="#contact" class="text-brand-600 hover:text-brand-accent px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-700 hover:text-brand-accent focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-brand-700 hover:text-brand-accent hover:bg-gray-50 rounded-md">Home</a>
+                <a href="#portfolio" class="block px-3 py-2 text-base font-medium text-brand-700 hover:text-brand-accent hover:bg-gray-50 rounded-md">Portfolio</a>
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-brand-700 hover:text-brand-accent hover:bg-gray-50 rounded-md">Services</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-brand-700 hover:text-brand-accent hover:bg-gray-50 rounded-md">About</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-brand-700 hover:text-brand-accent hover:bg-gray-50 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center bg-brand-900 text-white overflow-hidden group">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img id="hero-bg-image" src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Photographer in nature" 
+                 class="w-full h-full object-cover opacity-60 transition-all duration-500">
+            
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-900/50 to-brand-900"></div>
+        </div>
+
+        <!-- 👇 Change Image Button (UI) 👇 -->
+        <div class="absolute top-28 right-6 z-20">
+            <label for="hero-image-upload" class="bg-white/20 hover:bg-brand-accent backdrop-blur-sm border border-white/30 text-white px-4 py-2 rounded-full cursor-pointer transition-all duration-300 flex items-center gap-2 shadow-lg text-sm font-medium">
+                <i class="fa-solid fa-camera"></i> Change Background
+            </label>
+            <input type="file" id="hero-image-upload" accept="image/*" class="hidden">
+        </div>
+        <!-- 👆 Change Image Button (UI) 👆 -->
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+            <h1 class="text-7xl md:text-[10rem] font-serif font-bold mb-12 leading-none tracking-widest text-white drop-shadow-2xl">REDDY</h1>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://wa.me/447853198235" target="_blank" class="bg-[#25D366] text-white px-8 py-4 rounded-sm hover:bg-[#128C7E] transition duration-300 font-medium tracking-wide flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i> WhatsApp Us
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+            <a href="#portfolio" class="text-white/70 hover:text-white">
+                <i class="fa-solid fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-800 mb-4">Featured Portfolio</h2>
+                <div class="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
+                <p class="text-brand-500 max-w-2xl mx-auto">A curated selection of our favorite captures spanning weddings, portraits, and timeless moments.</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <!-- Item 1 -->
+                <div class="gallery-item fade-in-section rounded-sm shadow-sm aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" alt="Wedding Couple" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div class="text-center text-white">
+                            <h3 class="text-2xl font-serif mb-2">Wedding Bliss</h3>
+                            <p class="text-sm tracking-widest uppercase">View Gallery</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="gallery-item fade-in-section rounded-sm shadow-sm aspect-[4/5] md:mt-12">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop" alt="Portrait Photography" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div class="text-center text-white">
+                            <h3 class="text-2xl font-serif mb-2">Striking Portraits</h3>
+                            <p class="text-sm tracking-widest uppercase">View Gallery</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="gallery-item fade-in-section rounded-sm shadow-sm aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2074&auto=format&fit=crop" alt="Nature Landscape" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div class="text-center text-white">
+                            <h3 class="text-2xl font-serif mb-2">Into the Wild</h3>
+                            <p class="text-sm tracking-widest uppercase">View Gallery</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="gallery-item fade-in-section rounded-sm shadow-sm aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop" alt="Fashion Photography" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div class="text-center text-white">
+                            <h3 class="text-2xl font-serif mb-2">Fashion & Style</h3>
+                            <p class="text-sm tracking-widest uppercase">View Gallery</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="gallery-item fade-in-section rounded-sm shadow-sm aspect-[4/5] md:-mt-12 lg:-mt-0 lg:mt-12">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop" alt="Event Photography" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div class="text-center text-white">
+                            <h3 class="text-2xl font-serif mb-2">Event Highlights</h3>
+                            <p class="text-sm tracking-widest uppercase">View Gallery</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="gallery-item fade-in-section rounded-sm shadow-sm aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop" alt="Fine Art Photography" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <div class="text-center text-white">
+                            <h3 class="text-2xl font-serif mb-2">Fine Art</h3>
+                            <p class="text-sm tracking-widest uppercase">View Gallery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in-section">
+                <button class="border-b-2 border-brand-accent pb-1 text-brand-800 font-medium hover:text-brand-accent transition-colors uppercase tracking-wider text-sm">View All Projects</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                
+                <div class="w-full lg:w-1/3 fade-in-section">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-800 mb-6">Expertise & <br/>Services</h2>
+                    <div class="w-16 h-1 bg-brand-accent mb-6"></div>
+                    <p class="text-brand-600 mb-8 leading-relaxed">We provide a comprehensive range of photography services tailored to meet your specific needs. From intimate portraits to grand celebrations, our approach is professional, creative, and personalized.</p>
+                    <a href="#contact" class="inline-block bg-brand-800 text-white px-8 py-3 rounded-sm hover:bg-brand-900 transition duration-300">Request a Quote</a>
+                </div>
+
+                <div class="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Service 1 -->
+                    <div class="bg-white p-8 shadow-sm rounded-sm hover:shadow-md transition-shadow fade-in-section border border-gray-100">
+                        <i class="fa-solid fa-ring text-4xl text-brand-accent mb-6"></i>
+                        <h3 class="text-2xl font-serif font-bold text-brand-800 mb-3">Wedding Photography</h3>
+                        <p class="text-brand-500 line-clamp-3">Comprehensive coverage of your special day, capturing raw emotions, intricate details, and joyful moments.</p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="bg-white p-8 shadow-sm rounded-sm hover:shadow-md transition-shadow fade-in-section border border-gray-100">
+                        <i class="fa-solid fa-user-tie text-4xl text-brand-accent mb-6"></i>
+                        <h3 class="text-2xl font-serif font-bold text-brand-800 mb-3">Portrait Sessions</h3>
+                        <p class="text-brand-500 line-clamp-3">Individual, family, and professional headshots designed to highlight your personality and character.</p>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="bg-white p-8 shadow-sm rounded-sm hover:shadow-md transition-shadow fade-in-section border border-gray-100">
+                        <i class="fa-solid fa-building text-4xl text-brand-accent mb-6"></i>
+                        <h3 class="text-2xl font-serif font-bold text-brand-800 mb-3">Commercial Content</h3>
+                        <p class="text-brand-500 line-clamp-3">High-quality imagery for brands, products, and corporate events to elevate your business presence.</p>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="bg-white p-8 shadow-sm rounded-sm hover:shadow-md transition-shadow fade-in-section border border-gray-100">
+                        <i class="fa-solid fa-camera-retro text-4xl text-brand-accent mb-6"></i>
+                        <h3 class="text-2xl font-serif font-bold text-brand-800 mb-3">Event Coverage</h3>
+                        <p class="text-brand-500 line-clamp-3">Unobtrusive documentary-style photography for parties, concerts, and corporate gatherings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                
+                <div class="w-full lg:w-1/2 relative fade-in-section">
+                    <div class="absolute -inset-4 bg-brand-100 transform rotate-3 rounded-lg z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1554048612-b6a38148dfa6?q=80&w=2070&auto=format&fit=crop" alt="Photographer holding camera" class="relative z-10 w-full h-auto object-cover rounded-sm shadow-xl">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 shadow-lg z-20 rounded-sm">
+                        <p class="text-4xl font-serif font-bold text-brand-accent mb-1">10+</p>
+                        <p class="text-sm text-brand-600 font-bold uppercase tracking-wider">Years Experience</p>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 fade-in-section">
+                    <span class="text-brand-accent tracking-widest text-sm font-bold uppercase mb-2 block">Behind the Lens</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-800 mb-6">Hi, I'm Reddy.</h2>
+                    <p class="text-brand-600 mb-6 leading-relaxed text-lg">
+                        I am a passionate photographer based in India, dedicated to telling stories through light, shadow, and emotion. My journey began with a simple film camera and has evolved into a lifelong obsession with visual storytelling.
+                    </p>
+                    <p class="text-brand-600 mb-8 leading-relaxed">
+                        Whether working with natural light outdoors or designing complex studio setups, my goal remains the same: to create authentic, striking images that resonate. I believe every client has a unique story, and it's my privilege to document it.
+                    </p>
+                    
+                    <div class="flex items-center gap-6">
+                        <img src="https://ui-avatars.com/api/?name=Reddy&background=d4af37&color=fff&rounded=true&bold=true" alt="Reddy Signature" class="h-16 w-16 rounded-full border-2 border-brand-200">
+                        <div>
+                            <p class="font-serif font-bold text-xl text-brand-800">Reddy</p>
+                            <p class="text-sm text-brand-500">Lead Photographer & Founder</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats/Quote Banner -->
+    <section class="py-20 bg-brand-900 text-white relative overflow-hidden">
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center fade-in-section">
+            <i class="fa-solid fa-quote-left text-4xl text-brand-accent opacity-50 mb-6"></i>
+            <h3 class="text-3xl md:text-4xl font-serif italic mb-8 leading-relaxed">"Photography is an austere and blazing poetry of the real."</h3>
+            <p class="uppercase tracking-widest text-sm text-gray-400">- Ansel Adams</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-800 mb-4">Let's Create Together</h2>
+                <div class="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
+                <p class="text-brand-500 max-w-2xl mx-auto">Have a project in mind or want to check my availability? Reach out, and let's start a conversation.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 bg-white rounded-sm shadow-md overflow-hidden">
+                <!-- Contact Info -->
+                <div class="w-full lg:w-1/3 bg-brand-800 text-white p-10 fade-in-section">
+                    <h3 class="text-3xl font-serif mb-8">Contact Info</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 text-brand-accent w-6"></i>
+                            <div class="ml-4">
+                                <h4 class="font-bold mb-1">Studio Address</h4>
+                                <p class="text-gray-300 text-sm leading-relaxed">123 Creative Studio Lane<br>Art District, City 40001<br>India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-phone mt-1 text-brand-accent w-6"></i>
+                            <div class="ml-4">
+                                <h4 class="font-bold mb-1">Phone</h4>
+                                <p class="text-gray-300 text-sm">+44 7853 198235</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-envelope mt-1 text-brand-accent w-6"></i>
+                            <div class="ml-4">
+                                <h4 class="font-bold mb-1">Email</h4>
+                                <p class="text-gray-300 text-sm">hello@reddyphotography.site</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12">
+                        <h4 class="font-bold mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors">
+                                <i class="fa-brands fa-instagram text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors">
+                                <i class="fa-brands fa-facebook-f text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors">
+                                <i class="fa-brands fa-twitter text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="w-full lg:w-2/3 p-10 lg:p-12 fade-in-section">
+                    <form id="contactForm" class="space-y-6" onsubmit="event.preventDefault(); showMessage();">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-brand-700 mb-1">Full Name</label>
+                                <input type="text" id="name" required class="w-full border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-brand-accent transition-colors">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-brand-700 mb-1">Email Address</label>
+                                <input type="email" id="email" required class="w-full border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-brand-accent transition-colors">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-brand-700 mb-1">Interested In</label>
+                            <select id="service" class="w-full border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-brand-accent transition-colors text-brand-700">
+                                <option value="">Select a service...</option>
+                                <option value="wedding">Wedding Photography</option>
+                                <option value="portrait">Portrait Session</option>
+                                <option value="commercial">Commercial/Brand</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-brand-700 mb-1">Message Details</label>
+                            <textarea id="message" rows="4" required class="w-full border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-brand-accent transition-colors resize-none placeholder-gray-400" placeholder="Tell us about your event, dates, locations..."></textarea>
+                        </div>
+
+                        <button type="submit" class="bg-brand-800 text-white px-8 py-3 rounded-sm hover:bg-brand-accent transition duration-300 font-medium w-full md:w-auto">
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <!-- Form Success Message Placeholder -->
+                    <div id="formSuccess" class="hidden mt-6 p-4 bg-green-50 text-green-800 border border-green-200 rounded-sm">
+                        <i class="fa-solid fa-check-circle mr-2"></i> Thank you! Your message has been sent successfully. We'll be in touch soon.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <a href="#" class="text-3xl font-serif font-bold text-white tracking-wider mb-6 inline-block">
+                REDDY<span class="text-brand-accent">.</span>PHOTO
+            </a>
+            <p class="text-gray-400 mb-8 max-w-md mx-auto">Capturing timeless memories with professional photography services tailored for your special moments.</p>
+            
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-gray-400 hover:text-brand-accent transition-colors text-xl"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-brand-accent transition-colors text-xl"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-brand-accent transition-colors text-xl"><i class="fa-brands fa-pinterest"></i></a>
+            </div>
+            
+            <div class="text-gray-500 text-sm">
+                &copy; <span id="year"></span> Reddy Photography. All rights reserved. <br/>
+                <span class="text-xs mt-2 inline-block text-gray-600">Created for conceptual demonstration.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript functionality -->
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md', 'py-1');
+            } else {
+                navbar.classList.remove('shadow-md', 'py-1');
+            }
+        });
+
+        // Intersection Observer for Fade-in Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Stop observing once visible if you don't want it to repeat on scroll up
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // 👇 Image Changer Logic 👇
+        const heroImageUpload = document.getElementById('hero-image-upload');
+        const heroBgImage = document.getElementById('hero-bg-image');
+
+        heroImageUpload.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const imageUrl = URL.createObjectURL(file);
+                heroBgImage.src = imageUrl;
+            }
+        });
+        // 👆 Image Changer Logic 👆
+
+        // Form submission simulation
+        function showMessage() {
+            const form = document.getElementById('contactForm');
+            const successMsg = document.getElementById('formSuccess');
+            
+            form.reset(); // Clear inputs
+            successMsg.classList.remove('hidden'); // Show message
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
