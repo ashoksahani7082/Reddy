@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reddy Photography - Capturing Moments</title>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MTZGDFDH');</script>
+    <!-- End Google Tag Manager -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -107,6 +116,11 @@
 </head>
 <body class="antialiased selection:bg-brand-accent selection:text-white">
 
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTZGDFDH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -152,21 +166,14 @@
     <section id="home" class="relative h-screen flex items-center justify-center bg-brand-900 text-white overflow-hidden group">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img id="hero-bg-image" src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=2070&auto=format&fit=crop" 
+            <!-- 👇 CHANGE YOUR BACKGROUND IMAGE LINK HERE 👇 -->
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=2070&auto=format&fit=crop" 
                  alt="Photographer in nature" 
                  class="w-full h-full object-cover opacity-60 transition-all duration-500">
+            <!-- 👆 CHANGE YOUR BACKGROUND IMAGE LINK HERE 👆 -->
             
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-900/50 to-brand-900"></div>
         </div>
-
-        <!-- 👇 Change Image Button (UI) 👇 -->
-        <div class="absolute top-28 right-6 z-20">
-            <label for="hero-image-upload" class="bg-white/20 hover:bg-brand-accent backdrop-blur-sm border border-white/30 text-white px-4 py-2 rounded-full cursor-pointer transition-all duration-300 flex items-center gap-2 shadow-lg text-sm font-medium">
-                <i class="fa-solid fa-camera"></i> Change Background
-            </label>
-            <input type="file" id="hero-image-upload" accept="image/*" class="hidden">
-        </div>
-        <!-- 👆 Change Image Button (UI) 👆 -->
 
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
             <h1 class="text-7xl md:text-[10rem] font-serif font-bold mb-12 leading-none tracking-widest text-white drop-shadow-2xl">REDDY</h1>
@@ -527,19 +534,6 @@
         document.querySelectorAll('.fade-in-section').forEach(section => {
             observer.observe(section);
         });
-
-        // 👇 Image Changer Logic 👇
-        const heroImageUpload = document.getElementById('hero-image-upload');
-        const heroBgImage = document.getElementById('hero-bg-image');
-
-        heroImageUpload.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const imageUrl = URL.createObjectURL(file);
-                heroBgImage.src = imageUrl;
-            }
-        });
-        // 👆 Image Changer Logic 👆
 
         // Form submission simulation
         function showMessage() {
