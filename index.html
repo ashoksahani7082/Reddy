@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahadev App - India's Most Trusted Exchange</title>
+    <title>Mahadev Cloth - Premium Fashion & Apparel</title>
     
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -15,24 +15,21 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Lato', 'sans-serif'],
+                        'sans': ['Inter', 'sans-serif'],
                         'heading': ['Montserrat', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            800: '#166534',
-                            900: '#14532d',
-                            dark: '#0f172a',
-                            accent: '#25D366', // Vibrant WhatsApp/Download Green
-                            gold: '#fbbf24'
+                            dark: '#0a0a0a',
+                            surface: '#171717',
+                            accent: '#25D366', // WhatsApp/Download Green
+                            gold: '#d4af37'
                         }
                     },
                     animation: {
@@ -54,20 +51,28 @@
             scroll-behavior: smooth;
         }
         body {
-            font-family: 'Lato', sans-serif;
-            color: #333;
-            background-color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            color: #e5e5e5;
+            background-color: #0a0a0a;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
         }
         
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
         /* Fade-in Animation */
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
             visibility: hidden;
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, visibility;
         }
         .fade-in-section.is-visible {
@@ -83,17 +88,17 @@
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #0f172a; 
+            background: #0a0a0a; 
         }
         ::-webkit-scrollbar-thumb {
-            background: #25D366; 
+            background: #333; 
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #1da851; 
+            background: #25D366; 
         }
     </style>
 </head>
@@ -105,48 +110,48 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-brand-dark/95 backdrop-blur-md border-b border-gray-800 transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 glass-panel border-b-0 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="text-3xl font-heading font-black text-white tracking-wider uppercase">
-                        MAHADEV<span class="text-brand-accent">APP</span>
+                    <a href="#" class="text-2xl font-heading font-extrabold text-white tracking-widest uppercase">
+                        MAHADEV<span class="text-brand-accent font-light">CLOTH</span>
                     </a>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-gray-300 hover:text-brand-accent px-3 py-2 text-sm font-bold uppercase transition-colors">Home</a>
-                    <a href="#features" class="text-gray-300 hover:text-brand-accent px-3 py-2 text-sm font-bold uppercase transition-colors">Features</a>
-                    <a href="#benefits" class="text-gray-300 hover:text-brand-accent px-3 py-2 text-sm font-bold uppercase transition-colors">Benefits</a>
-                    <a href="#contact" class="text-gray-300 hover:text-brand-accent px-3 py-2 text-sm font-bold uppercase transition-colors">Contact</a>
+                    <a href="#home" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase tracking-wider transition-colors">Home</a>
+                    <a href="#collection" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase tracking-wider transition-colors">Collection</a>
+                    <a href="#quality" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase tracking-wider transition-colors">Quality</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium uppercase tracking-wider transition-colors">Contact</a>
                     
                     <!-- Navbar Download Button -->
-                    <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" target="_blank" class="bg-brand-accent text-white px-5 py-2 rounded-full hover:bg-green-600 transition duration-300 font-bold tracking-wide flex items-center gap-2 shadow-lg">
-                        <i class="fa-brands fa-android"></i> Download
+                    <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" target="_blank" class="bg-brand-accent text-white px-6 py-2 rounded-full hover:bg-green-500 transition duration-300 font-semibold tracking-wide flex items-center gap-2 shadow-lg">
+                        <i class="fa-brands fa-android"></i> Download App
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center gap-4">
-                    <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" class="bg-brand-accent text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-1 shadow-md">
-                        <i class="fa-brands fa-android"></i> APK
+                    <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" class="bg-brand-accent text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1 shadow-md">
+                        <i class="fa-brands fa-android"></i> GET APP
                     </a>
                     <button id="mobile-menu-btn" class="text-white hover:text-brand-accent focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                        <i class="fa-solid fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-gray-800 absolute w-full shadow-lg">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-                <a href="#home" class="block px-3 py-3 text-base font-bold text-white hover:text-brand-accent uppercase rounded-md">Home</a>
-                <a href="#features" class="block px-3 py-3 text-base font-bold text-white hover:text-brand-accent uppercase rounded-md">Features</a>
-                <a href="#benefits" class="block px-3 py-3 text-base font-bold text-white hover:text-brand-accent uppercase rounded-md">Benefits</a>
-                <a href="#contact" class="block px-3 py-3 text-base font-bold text-white hover:text-brand-accent uppercase rounded-md">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden glass-panel absolute w-full shadow-2xl">
+            <div class="px-4 pt-2 pb-6 space-y-2 text-center">
+                <a href="#home" class="block px-3 py-3 text-sm font-medium text-white hover:bg-white/5 uppercase rounded-lg tracking-wider">Home</a>
+                <a href="#collection" class="block px-3 py-3 text-sm font-medium text-white hover:bg-white/5 uppercase rounded-lg tracking-wider">Collection</a>
+                <a href="#quality" class="block px-3 py-3 text-sm font-medium text-white hover:bg-white/5 uppercase rounded-lg tracking-wider">Quality</a>
+                <a href="#contact" class="block px-3 py-3 text-sm font-medium text-white hover:bg-white/5 uppercase rounded-lg tracking-wider">Contact</a>
             </div>
         </div>
     </nav>
@@ -155,204 +160,176 @@
     <section id="home" class="relative min-h-screen flex items-center justify-center bg-brand-dark text-white overflow-hidden group pt-20">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <!-- Sports / Casino Background -->
-            <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000&auto=format&fit=crop" 
-                 alt="Sports Stadium Background" 
-                 class="w-full h-full object-cover opacity-30 transition-all duration-500 scale-105 group-hover:scale-100">
+            <!-- Lord Mahadev Image -->
+            <img src="https://images.unsplash.com/photo-1629734633719-74d30c00ceeb?q=80&w=2000&auto=format&fit=crop" 
+                 alt="Lord Mahadev" 
+                 class="w-full h-full object-cover opacity-20 transition-transform duration-1000 scale-105 group-hover:scale-100 object-top">
             
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/60 to-brand-dark"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-transparent to-brand-dark"></div>
         </div>
 
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-10">
-            <div class="inline-block bg-brand-accent/20 border border-brand-accent text-brand-accent px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
-                India's No. 1 Trusted Platform
+            <div class="inline-block glass-panel text-gray-300 px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-widest mb-8">
+                Premium Men's & Women's Wear
             </div>
             
-            <h1 class="text-6xl md:text-[7rem] font-heading font-black mb-6 leading-none tracking-tight text-white drop-shadow-2xl uppercase italic">
-                MAHADEV <span class="text-brand-accent">APP</span>
+            <h1 class="text-5xl md:text-[6rem] font-heading font-extrabold mb-6 leading-tight tracking-tight text-white drop-shadow-2xl uppercase">
+                MAHADEV <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500">CLOTH</span>
             </h1>
             
-            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-medium">
-                Experience lightning-fast withdrawals, 24/7 live support, and the best odds in the market. Play anytime, anywhere!
+            <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+                Elevate your style with our exclusive collection. Discover premium fabrics, modern designs, and unmatched comfort. Shop our catalog directly from the app.
             </p>
             
             <!-- HIGHLY HIGHLIGHTED DOWNLOAD BUTTON -->
-            <div class="flex flex-col items-center justify-center gap-6 mt-8">
+            <div class="flex flex-col items-center justify-center gap-6 mt-4">
                 <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" target="_blank" 
-                   class="btn-download-highlight bg-brand-accent text-white px-10 py-5 rounded-full hover:bg-[#1da851] transition duration-300 font-black tracking-wider flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(37,211,102,0.6)] text-2xl md:text-3xl w-full sm:w-auto transform hover:-translate-y-1">
-                    <i class="fa-brands fa-android text-4xl"></i> DOWNLOAD APK NOW
+                   class="btn-download-highlight bg-brand-accent text-white px-10 py-5 rounded-full hover:bg-green-500 transition duration-300 font-bold tracking-widest flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(37,211,102,0.5)] text-xl md:text-2xl w-full sm:w-auto transform hover:-translate-y-1">
+                    <i class="fa-brands fa-android text-3xl"></i> DOWNLOAD APP NOW
                 </a>
                 
-                <div class="flex items-center gap-4 text-sm text-gray-400 font-bold uppercase">
-                    <span class="flex items-center gap-1"><i class="fa-solid fa-shield-halved text-brand-accent"></i> 100% Secure</span>
-                    <span class="flex items-center gap-1"><i class="fa-solid fa-bolt text-brand-gold"></i> Fast Setup</span>
+                <div class="flex items-center gap-6 text-xs text-gray-500 font-medium uppercase tracking-widest">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-shirt text-brand-gold"></i> Premium Quality</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-brand-gold"></i> Fast Delivery</span>
                 </div>
             </div>
         </div>
-        
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10 hidden md:block">
-            <a href="#features" class="text-white/50 hover:text-brand-accent">
-                <i class="fa-solid fa-chevron-down text-3xl"></i>
-            </a>
-        </div>
     </section>
 
-    <!-- App Features Section -->
-    <section id="features" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in-section">
-                <h2 class="text-4xl md:text-5xl font-heading font-black text-brand-dark mb-4 uppercase">App Features</h2>
-                <div class="w-24 h-1.5 bg-brand-accent mx-auto mb-6 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Everything you need for the ultimate gaming and exchange experience, packed right into your smartphone.</p>
+    <!-- App Features Section (Collection Highlights) -->
+    <section id="collection" class="py-24 bg-brand-dark relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4 uppercase tracking-widest">Why Mahadev Cloth?</h2>
+                <div class="w-16 h-1 bg-brand-accent mx-auto mb-6 rounded-full"></div>
             </div>
 
-            <!-- Features Grid -->
+            <!-- Features Grid (Glassmorphism Cards) -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Item 1 -->
-                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all fade-in-section border border-gray-100 text-center group">
-                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-bolt-lightning text-4xl text-brand-accent"></i>
+                <div class="glass-panel p-10 rounded-3xl hover:bg-white/5 transition-all duration-500 fade-in-section text-center group">
+                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:-translate-y-2 transition-transform duration-300 border border-white/10">
+                        <i class="fa-solid fa-gem text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-heading font-bold text-brand-dark mb-3">Instant Withdrawals</h3>
-                    <p class="text-gray-600">Get your winnings transferred to your account instantly with our 24/7 automated payment system.</p>
+                    <h3 class="text-xl font-heading font-semibold text-white mb-4 tracking-wide">Premium Fabrics</h3>
+                    <p class="text-gray-400 font-light leading-relaxed text-sm">Experience the finest quality materials curated for comfort and long-lasting durability.</p>
                 </div>
                 
                 <!-- Item 2 -->
-                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all fade-in-section border border-gray-100 text-center group md:-translate-y-4">
-                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-headset text-4xl text-brand-accent"></i>
+                <div class="glass-panel p-10 rounded-3xl hover:bg-white/5 transition-all duration-500 fade-in-section text-center group md:-translate-y-6">
+                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:-translate-y-2 transition-transform duration-300 border border-white/10">
+                        <i class="fa-solid fa-mobile-screen text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-heading font-bold text-brand-dark mb-3">24/7 VIP Support</h3>
-                    <p class="text-gray-600">Our dedicated support team is available round the clock via WhatsApp to assist you with any queries.</p>
+                    <h3 class="text-xl font-heading font-semibold text-white mb-4 tracking-wide">App Exclusive</h3>
+                    <p class="text-gray-400 font-light leading-relaxed text-sm">Unlock special collections, heavy discounts, and flash sales available only on our mobile app.</p>
                 </div>
                 
                 <!-- Item 3 -->
-                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all fade-in-section border border-gray-100 text-center group">
-                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-shield-cat text-4xl text-brand-accent"></i>
+                <div class="glass-panel p-10 rounded-3xl hover:bg-white/5 transition-all duration-500 fade-in-section text-center group">
+                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:-translate-y-2 transition-transform duration-300 border border-white/10">
+                        <i class="fa-solid fa-box-open text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-heading font-bold text-brand-dark mb-3">100% Secure</h3>
-                    <p class="text-gray-600">Your data and transactions are protected with military-grade encryption ensuring complete privacy.</p>
+                    <h3 class="text-xl font-heading font-semibold text-white mb-4 tracking-wide">Quick Dispatch</h3>
+                    <p class="text-gray-400 font-light leading-relaxed text-sm">We process and ship your orders swiftly so you can wear your new favorites sooner.</p>
                 </div>
-            </div>
-            
-            <div class="text-center mt-12 fade-in-section">
-                <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" class="inline-block border-b-2 border-brand-accent pb-1 text-brand-dark font-bold hover:text-brand-accent transition-colors uppercase tracking-wider text-lg">
-                    Experience it Now <i class="fa-solid fa-arrow-right ml-2"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section id="benefits" class="py-24 bg-brand-dark text-white overflow-hidden">
+    <!-- Quality Section -->
+    <section id="quality" class="py-24 bg-brand-surface overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row gap-16 items-center">
                 
                 <div class="w-full lg:w-1/2 relative fade-in-section">
-                    <div class="absolute -inset-4 bg-brand-accent/20 transform -rotate-3 rounded-2xl z-0"></div>
-                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop" alt="Gaming App on Phone" class="relative z-10 w-full h-auto object-cover rounded-2xl shadow-2xl">
-                    <div class="absolute -bottom-6 -right-6 bg-brand-accent p-6 shadow-xl z-20 rounded-xl text-center">
-                        <p class="text-4xl font-heading font-black text-white mb-1">1M+</p>
-                        <p class="text-sm text-brand-dark font-bold uppercase tracking-wider">Active Users</p>
-                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-accent/20 to-transparent rounded-3xl transform -rotate-3 scale-105 z-0 blur-xl"></div>
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop" alt="Premium Clothing Collection" class="relative z-10 w-full h-auto object-cover rounded-3xl shadow-2xl border border-white/10">
                 </div>
 
                 <div class="w-full lg:w-1/2 fade-in-section">
-                    <span class="text-brand-accent tracking-widest text-sm font-bold uppercase mb-2 block">Premium Experience</span>
-                    <h2 class="text-4xl md:text-5xl font-heading font-black text-white mb-6 uppercase">Why Play on <br/>Mahadev App?</h2>
+                    <span class="text-brand-accent tracking-widest text-xs font-semibold uppercase mb-4 block">Fashion Redefined</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-8 leading-tight">Elevate Your Wardrobe Today.</h2>
                     
-                    <ul class="space-y-6 mt-8">
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-circle-check text-brand-accent mt-1 text-xl mr-4"></i>
+                    <ul class="space-y-6">
+                        <li class="flex items-start glass-panel p-4 rounded-2xl">
+                            <i class="fa-solid fa-check text-brand-accent mt-1 mr-4"></i>
                             <div>
-                                <h4 class="text-xl font-bold mb-1">Live Sports Updates</h4>
-                                <p class="text-gray-400">Get real-time updates and live scores for Cricket, Football, Tennis, and more right on your dashboard.</p>
+                                <h4 class="text-white font-medium mb-1">Trendy Designs</h4>
+                                <p class="text-gray-400 text-sm font-light">Stay ahead of the curve with our constantly updated fashion lines.</p>
                             </div>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-circle-check text-brand-accent mt-1 text-xl mr-4"></i>
+                        <li class="flex items-start glass-panel p-4 rounded-2xl">
+                            <i class="fa-solid fa-check text-brand-accent mt-1 mr-4"></i>
                             <div>
-                                <h4 class="text-xl font-bold mb-1">User-Friendly Interface</h4>
-                                <p class="text-gray-400">Designed for both beginners and pros. Easy navigation makes placing your entries seamless.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-circle-check text-brand-accent mt-1 text-xl mr-4"></i>
-                            <div>
-                                <h4 class="text-xl font-bold mb-1">Exclusive Bonuses</h4>
-                                <p class="text-gray-400">Enjoy signup bonuses, referral rewards, and regular cashback offers exclusively on the app.</p>
+                                <h4 class="text-white font-medium mb-1">Seamless Shopping</h4>
+                                <p class="text-gray-400 text-sm font-light">A beautiful, smooth, and hassle-free checkout experience on the app.</p>
                             </div>
                         </li>
                     </ul>
                     
                     <div class="mt-10">
-                        <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" class="inline-block bg-brand-accent text-white px-8 py-4 rounded-full hover:bg-green-500 transition duration-300 font-bold uppercase tracking-wide shadow-lg">
-                            Get Your ID Now
+                        <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" class="inline-block bg-white text-brand-dark px-8 py-4 rounded-full hover:bg-gray-200 transition duration-300 font-bold uppercase tracking-widest text-sm shadow-xl">
+                            Explore Catalog
                         </a>
                     </div>
                 </div>
 
             </div>
-        </div>
-    </section>
-
-    <!-- Banner Section -->
-    <section class="py-16 bg-brand-accent text-brand-dark relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center fade-in-section">
-            <h3 class="text-3xl md:text-5xl font-heading font-black mb-4 uppercase italic">"Don't Just Watch The Game. Be Part Of It!"</h3>
-            <p class="uppercase font-bold tracking-widest text-lg">- Join The Winning Team Today</p>
         </div>
     </section>
 
     <!-- Contact / Support Section -->
-    <section id="contact" class="py-24 bg-gray-50">
+    <section id="contact" class="py-24 bg-brand-dark relative border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in-section">
-                <h2 class="text-4xl md:text-5xl font-heading font-black text-brand-dark mb-4 uppercase">24/7 Support</h2>
-                <div class="w-24 h-1.5 bg-brand-accent mx-auto mb-6 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Need help getting started or have a withdrawal request? Contact our official support team immediately.</p>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4 uppercase tracking-widest">Get In Touch</h2>
+                <div class="w-16 h-1 bg-brand-accent mx-auto mb-6 rounded-full"></div>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm font-light">Need assistance with sizes or tracking an order? Our support team is here to help.</p>
             </div>
 
-            <div class="flex flex-col lg:flex-row gap-12 bg-white rounded-2xl shadow-xl overflow-hidden max-w-5xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto">
                 
                 <!-- Support Info -->
-                <div class="w-full lg:w-5/12 bg-brand-dark text-white p-10 fade-in-section flex flex-col justify-center">
-                    <h3 class="text-3xl font-heading font-black mb-8 uppercase">Reach Out</h3>
+                <div class="w-full lg:w-5/12 glass-panel p-10 rounded-3xl fade-in-section flex flex-col justify-center">
+                    <h3 class="text-2xl font-heading font-semibold text-white mb-8 tracking-wide">Contact Us</h3>
                     
                     <div class="space-y-8">
-                        <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" class="flex items-center group">
-                            <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
+                        <a href="https://wa.me/919236327410" target="_blank" class="flex items-center group">
+                            <div class="w-14 h-14 glass-panel rounded-2xl flex items-center justify-center group-hover:bg-brand-accent/20 transition-all border border-brand-accent/30">
+                                <i class="fa-brands fa-whatsapp text-2xl text-brand-accent"></i>
                             </div>
-                            <div class="ml-4">
-                                <h4 class="font-bold text-lg mb-1">WhatsApp Support</h4>
-                                <p class="text-brand-accent text-sm font-bold uppercase">Click to Message</p>
+                            <div class="ml-5">
+                                <h4 class="font-medium text-white mb-1">WhatsApp Support</h4>
+                                <p class="text-gray-400 text-sm font-light">+91 9236327410</p>
                             </div>
                         </a>
                         
-                        <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" class="flex items-center group">
-                            <div class="w-12 h-12 bg-[#0088cc] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <i class="fa-brands fa-telegram text-2xl text-white"></i>
+                        <div class="flex items-center">
+                            <div class="w-14 h-14 glass-panel rounded-2xl flex items-center justify-center border border-white/10">
+                                <i class="fa-regular fa-envelope text-2xl text-white"></i>
                             </div>
-                            <div class="ml-4">
-                                <h4 class="font-bold text-lg mb-1">Telegram Channel</h4>
-                                <p class="text-[#0088cc] text-sm font-bold uppercase">Join for Updates</p>
+                            <div class="ml-5">
+                                <h4 class="font-medium text-white mb-1">Email Us</h4>
+                                <p class="text-gray-400 text-sm font-light">support@mahadevcloth.com</p>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Call to Action Box -->
-                <div class="w-full lg:w-7/12 p-10 lg:p-12 fade-in-section text-center flex flex-col items-center justify-center">
-                    <img src="https://cdn-icons-png.flaticon.com/512/888/888856.png" alt="Android Icon" class="w-24 h-24 mb-6">
-                    <h3 class="text-2xl font-bold text-brand-dark mb-4">Ready to start winning?</h3>
-                    <p class="text-gray-600 mb-8">Download the official Mahadev App directly to your Android device for the safest and fastest experience.</p>
+                <div class="w-full lg:w-7/12 glass-panel p-10 lg:p-12 rounded-3xl fade-in-section text-center flex flex-col items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-accent/10 to-transparent"></div>
+                    
+                    <i class="fa-solid fa-mobile-button text-5xl text-white/50 mb-6 relative z-10"></i>
+                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Experience the App</h3>
+                    <p class="text-gray-400 mb-8 font-light relative z-10 max-w-sm">Download the official Mahadev Cloth app directly to your Android device for the best shopping experience.</p>
                     
                     <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" 
-                       class="btn-download-highlight w-full bg-brand-accent text-white px-8 py-4 rounded-xl hover:bg-green-600 transition duration-300 font-black text-xl uppercase tracking-wide flex justify-center items-center gap-3">
-                        <i class="fa-solid fa-download"></i> Download App Now
+                       class="btn-download-highlight relative z-10 w-full sm:w-auto bg-brand-accent text-white px-8 py-4 rounded-full hover:bg-green-500 transition duration-300 font-bold text-sm uppercase tracking-widest flex justify-center items-center gap-3">
+                        <i class="fa-solid fa-download"></i> Get The APK
                     </a>
                 </div>
             </div>
@@ -360,24 +337,24 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white py-12 border-t border-gray-800">
+    <footer class="bg-brand-surface text-white py-12 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-            <a href="#" class="text-3xl font-heading font-black text-white tracking-wider mb-6 inline-block uppercase">
-                MAHADEV<span class="text-brand-accent">APP</span>
+            <a href="#" class="text-2xl font-heading font-extrabold text-white tracking-widest mb-4 inline-block uppercase">
+                MAHADEV<span class="text-gray-500 font-light">CLOTH</span>
             </a>
-            <p class="text-gray-400 mb-8 max-w-md mx-auto">India's most trusted and fastest sports exchange platform. Play responsibly.</p>
+            <p class="text-gray-500 text-sm font-light mb-8 max-w-md mx-auto">Premium Fashion App & Retailer.</p>
             
-            <div class="text-gray-500 text-sm font-bold">
-                &copy; <span id="year"></span> Mahadev App. All rights reserved. <br/>
-                <span class="text-xs mt-3 inline-block text-gray-600 font-normal">Must be 18+ to play. Terms and Conditions Apply.</span>
+            <div class="text-gray-600 text-xs font-medium tracking-wide">
+                &copy; <span id="year"></span> Mahadev Cloth. All rights reserved. <br/>
+                <span class="mt-2 inline-block font-light">Designed for the modern wardrobe.</span>
             </div>
         </div>
     </footer>
 
     <!-- Fixed Bottom Download Button for Mobile Only -->
-    <div class="md:hidden fixed bottom-0 left-0 w-full z-50 p-4 bg-brand-dark/90 backdrop-blur border-t border-gray-800">
-        <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" class="btn-download-highlight w-full block text-center bg-brand-accent text-white px-4 py-3 rounded-lg font-black uppercase tracking-wide text-lg">
-            <i class="fa-brands fa-android"></i> Download APK Now
+    <div class="md:hidden fixed bottom-0 left-0 w-full z-50 p-4 glass-panel border-t border-white/10">
+        <a href="https://mahadev-satta.vercel.app/assets/apk/mahadev.apk" class="btn-download-highlight w-full block text-center bg-brand-accent text-white px-4 py-4 rounded-xl font-bold uppercase tracking-widest text-sm shadow-xl">
+            <i class="fa-brands fa-android mr-2"></i> Download App
         </a>
     </div>
 
@@ -405,9 +382,9 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('shadow-xl', 'py-0');
+                navbar.classList.add('bg-brand-dark/80');
             } else {
-                navbar.classList.remove('shadow-xl', 'py-0');
+                navbar.classList.remove('bg-brand-dark/80');
             }
         });
 
